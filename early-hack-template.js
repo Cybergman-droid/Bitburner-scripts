@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 export async function main(ns) {
 	// Defines the "target server"
+	// TODO	add script arguments to dynamically change the target
 	const currentServer = ns.getHostname();
 	const target = "omega-net"; //|| currentServer
 
