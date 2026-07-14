@@ -1,0 +1,263 @@
+API BREAK INFO FOR 3.0.0
+
+You cannot use the deprecated VSCode extension to connect to the Steam app via API server now. You have to use Remote API to connect your external editors to Bitburner.
+For more information, please check the Remote API page in the Documentation tab. If you have a question, please ask us on #external-editors on Discord (https://discord.gg/TFc3hKD).
+
+
+
+With some APIs, when you passed values to their params, you could pass a value that was not an exact match. For example, with ns.singularity.commitCrime, you could pass "Rob Store", "rob store", "RobStore", "robstore", "robStore", etc. This is called "fuzzy matching". Now, you must pass an exact value (i.e., Rob Store). This change affects:
+- Bladeburner action and type: BladeburnerActionType, BladeburnerGeneralActionName, BladeburnerContractName, BladeburnerOperationName, BladeburnerBlackOpName, SpecialBladeburnerActionTypeForSleeve, BladeburnerActionTypeForSleeve.
+- Crime: CrimeType
+- Faction work: FactionWorkType
+- University class: UniversityClassType
+- Gym stat: GymType
+- Job field: JobField
+- Stock position: PositionType
+- Stock order: OrderType
+You can access these values via ns.enums and Bladeburner APIs.
+
+
+
+ns.nuke, ns.brutessh, ns.ftpcrack, ns.relaysmtp, ns.httpworm, and ns.sqlinject now do not throw an error when you do not have the required .exe file or enough opened ports.
+This should not be a problem with most scripts. However, if you were catching errors and branching on the result of success/failure, you will need to use the return value instead.
+
+Usage of the following functions may have been affected:
+ns.nuke
+ns.brutessh
+ns.ftpcrack
+ns.relaysmtp
+ns.httpworm
+ns.sqlinject
+
+Potentially affected files on server home (with line numbers):
+serverprep/servers_nuke.js: (Line numbers: 12, 16, 20, 24, 28, 43)
+
+
+
+Some APIs returned a default value when you passed the hostname of a non-hackable server (e.g., hacknet server) to them.
+These APIs now throw an error. The affected APIs are:
+- ns.hackAnalyzeThreads
+- ns.hackAnalyze
+- ns.hackAnalyzeSecurity
+- ns.hackAnalyzeChance
+- ns.growthAnalyze
+- ns.growthAnalyzeSecurity
+- ns.nuke
+- ns.brutessh
+- ns.ftpcrack
+- ns.relaysmtp
+- ns.httpworm
+- ns.sqlinject
+- ns.getServerMoneyAvailable
+- ns.getServerSecurityLevel
+- ns.getServerBaseSecurityLevel
+- ns.getServerMinSecurityLevel
+- ns.getServerRequiredHackingLevel
+- ns.getServerMaxMoney
+- ns.getServerGrowth
+- ns.getServerNumPortsRequired
+- ns.cloud.deleteServer
+- ns.getHackTime
+- ns.getGrowTime
+- ns.getWeakenTime
+
+
+Usage of the following functions may have been affected:
+ns.hackAnalyzeThreads
+ns.hackAnalyze
+ns.hackAnalyzeSecurity
+ns.hackAnalyzeChance
+ns.growthAnalyze
+ns.growthAnalyzeSecurity
+ns.nuke
+ns.brutessh
+ns.ftpcrack
+ns.relaysmtp
+ns.httpworm
+ns.sqlinject
+ns.getServerMoneyAvailable
+ns.getServerSecurityLevel
+ns.getServerBaseSecurityLevel
+ns.getServerMinSecurityLevel
+ns.getServerRequiredHackingLevel
+ns.getServerMaxMoney
+ns.getServerGrowth
+ns.getServerNumPortsRequired
+ns.deleteServer
+ns.getHackTime
+ns.getGrowTime
+ns.getWeakenTime
+
+Potentially affected files on server home (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+serverprep/servers_nuke.js: (Line numbers: 12, 16, 20, 24, 28, 43)
+hackLevelGrow.js: (Line numbers: 9, 10)
+mgcpHack.js: (Line numbers: 8, 13, 19, 22)
+nwohack.js: (Line numbers: 8, 13, 19, 22)
+ecorpHack.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server rho-construction (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server alpha-ent (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server aevum-police (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server rothman-uni (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server summit-uni (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server syscore (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server catalyst (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server the-hub (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server computek (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server netlink (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server johnson-ortho (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server n00dles (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server foodnstuff (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server sigma-cosmetics (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server joesguns (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server zer0 (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server nectar-net (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server neo-net (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server silver-helix (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server hong-fang-tea (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server harakiri-sushi (with line numbers):
+hackLevelGrow.js: (Line numbers: 9, 10)
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server phantasy (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server max-hardware (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server omega-net (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server crush-fitness (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server iron-gym (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server millenium-fitness (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server run4theh111z (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server I.I.I.I (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server avmnite-02h (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server . (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+Potentially affected files on server CSEC (with line numbers):
+early-hack-template.js: (Line numbers: 8, 13, 19, 22)
+
+
+
+The cloud server (purchased server) functions have been moved to their own interface, ns.cloud.
+"ns.getPurchasedServerCost()" was removed.
+It has been automatically replaced with "ns.cloud.getServerCost()"
+
+"ns.purchaseServer()" was removed.
+It has been automatically replaced with "ns.cloud.purchaseServer()"
+
+"ns.getPurchasedServerUpgradeCost()" was removed.
+It has been automatically replaced with "ns.cloud.getServerUpgradeCost()"
+
+"ns.upgradePurchasedServer()" was removed.
+It has been automatically replaced with "ns.cloud.upgradeServer()"
+
+"ns.renamePurchasedServer()" was removed.
+It has been automatically replaced with "ns.cloud.renameServer()"
+
+"ns.deleteServer()" was removed.
+It has been automatically replaced with "ns.cloud.deleteServer()"
+
+"ns.getPurchasedServers()" was removed.
+It has been automatically replaced with "ns.cloud.getServerNames()"
+
+"ns.getPurchasedServerLimit()" was removed.
+It has been automatically replaced with "ns.cloud.getServerLimit()"
+
+"ns.getPurchasedServerMaxRam()" was removed.
+It has been automatically replaced with "ns.cloud.getRamLimit()"
+
+Usage of the following functions may have been affected:
+ns.getPurchasedServerCost
+ns.purchaseServer
+ns.getPurchasedServerUpgradeCost
+ns.upgradePurchasedServer
+ns.renamePurchasedServer
+ns.deleteServer
+ns.getPurchasedServers
+ns.getPurchasedServerLimit
+ns.getPurchasedServerMaxRam
+
+Potentially affected files on server home (with line numbers):
+slaveservers.js: (Line numbers: 4, 8)
+
+
+
+We added a new feature called Dark Net. The "darkweb" server is a darknet server now.
+Some APIs that require the target host to be a normal server do not work with darkweb. This should not be a 
+problem with most scripts. The most potentially affected API is "ns.scan()". Darkweb does not appear in the 
+result of this API anymore. If you want to find darknet servers, you need to use "ns.dnet.probe()".
+
+
+
+ns.cloud.purchaseServer() and ns.cloud.deleteServer() previously removed whitespace from the provided hostname inconsistently.
+They now use the hostname as provided.
+
+Usage of the following functions may have been affected:
+ns.cloud.purchaseServer
+ns.cloud.deleteServer
+
+Potentially affected files on server home (with line numbers):
+slaveservers.js: (Line number: 8)
