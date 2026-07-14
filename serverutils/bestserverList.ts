@@ -4,6 +4,7 @@ interface ModifiedServer extends Server {
 	hackWeight: number;
 	chanceOfHacking: number;
 	expectedValuePerHack: number;
+	expectedValuePerSec: number;
 }
 
 export function getBestServerList(servers: ModifiedServer[], player: Player) {
@@ -20,9 +21,10 @@ export function getBestServerList(servers: ModifiedServer[], player: Player) {
 	console.log("filtered servers");
 	console.log(filteredServers);
 	filteredServers.sort(
-		(a, b) => b.expectedValuePerHack - a.expectedValuePerHack,
+		(a: ModifiedServer, b: ModifiedServer) =>
+			b.expectedValuePerSec - a.expectedValuePerSec,
 	);
-	console.log("sorted by expected value per hack");
+	console.log("sorted by expected value per sec");
 	console.log(filteredServers);
 	// console.log(player.skills.hacking)
 	return filteredServers;
@@ -37,7 +39,7 @@ function filterServers(server: ModifiedServer, player: Player) {
 		return false;
 	}
 
-	if ((server.requiredHackingSkill ?? 0) >= player.skills.hacking / 2) {
+	if ((server.requiredHackingSkill ?? 0) > player.skills.hacking) {
 		return false;
 	}
 

@@ -1,7 +1,8 @@
 /** @param {NS} ns */
 export async function main(ns) {
 	// Defines the "target server"
-	const target = "summit-uni";
+	const currentServer = ns.getHostname();
+	const target = "phantasy"; //|| currentServer
 
 	// Defines how much money a server should have before we hack it
 	// In this case, it is set to the maximum amount of money.
@@ -12,7 +13,7 @@ export async function main(ns) {
 	// we'll weaken it before doing anything else
 	const securityThresh = ns.getServerMinSecurityLevel(target);
 
-	ns.tprint(`Early hack deployed on ${target}`);
+	ns.tprint(`Early hack deployed on ${target} from ${currentServer}`);
 
 	// Infinite loop that continously hacks/grows/weakens the target server
 	while (true) {

@@ -30,7 +30,7 @@ export async function main(ns) {
 					let maxRam = server.maxRam;
 					let numOfThreads = Math.floor(maxRam / scriptRam);
 					ns.scp(scriptToBeRun, server.hostname, "home");
-					if (numOfThreads >= 1 && server.moneyMax > 0) {
+					if (numOfThreads >= 1 && (server.moneyMax ?? 0) > 0) {
 						try {
 							ns.exec(scriptToBeRun, server.hostname, numOfThreads);
 						} catch (e) {
@@ -53,7 +53,7 @@ export async function main(ns) {
 			}
 		}
 		ns.tprint(`${scriptToBeRun} executed with ${totalThreads} threads`);
-		await ns.sleep(300000);
+		await ns.sleep(30000);
 		ns.tprint("Checking for extra servers to hack");
 		ns.tprint(
 			"===============================================================================",
