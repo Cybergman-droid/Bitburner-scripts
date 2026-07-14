@@ -2,7 +2,7 @@
 export async function main(ns) {
 	// Defines the "target server"
 	const currentServer = ns.getHostname();
-	const target = "phantasy"; //|| currentServer
+	const target = "omega-net"; //|| currentServer
 
 	// Defines how much money a server should have before we hack it
 	// In this case, it is set to the maximum amount of money.
