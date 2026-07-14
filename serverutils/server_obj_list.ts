@@ -23,7 +23,8 @@ export function getServerObjects(ns: NS, serverNames: string[]) {
 			chanceOfHack * (serverObj.moneyMax ?? 0) * percentPerHack;
 
 		let valuePerSec: number =
-			(chanceOfHack * (serverObj.moneyMax ?? 0) * percentPerHack) / timePerHack;
+			(chanceOfHack * (serverObj.moneyMax ?? 0) * percentPerHack) /
+			(timePerHack / 1000);
 
 		let modifiedServerObj: ModifiedServer = {
 			...serverObj,
