@@ -6,7 +6,7 @@ import { getBestServerList } from "serverutils/bestserverList.ts";
 export async function main(ns) {
 	let totalThreads = 0;
 	let player = ns.getPlayer();
-	let scriptToBeRun = "early-hack-template.js";
+	let scriptToBeRun = "smart-hack-template.ts";
 	let scriptRam = ns.getScriptRam(scriptToBeRun);
 	let serverNames = getServerNames(ns);
 	let servers = getServerObjects(ns, serverNames);
