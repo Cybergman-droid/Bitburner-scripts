@@ -1,5 +1,6 @@
-import { getServerNames } from "/serverprep/serverlist.js";
-import { getRootAccess } from "/serverprep/servers_nuke.js";
+import { getServerNames } from "serverutils/server_name_list.ts";
+import { getRootAccess } from "serverutils/server_nuke";
+import { getServerObjects } from "serverutils/server_obj_list.ts";
 /** @param {NS} ns */
 export async function main(ns) {
 	let scriptToBeRun = "hackLevelGrow.js";
