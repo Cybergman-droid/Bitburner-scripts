@@ -1,9 +1,15 @@
 /** @param {NS} ns */
 export async function main(ns) {
+	let scriptArgs = ns.args;
 	// Defines the "target server"
-	// TODO	add script arguments to dynamically change the target
 	const currentServer = ns.getHostname();
-	const target = "omega-net"; //|| currentServer
+
+	let passedTarget = scriptArgs[0];
+
+	const target =
+		typeof passedTarget === "string" && ns.serverExists(passedTarget)
+			? passedTarget
+			: currentServer;
 
 	// Defines how much money a server should have before we hack it
 	// In this case, it is set to the maximum amount of money.

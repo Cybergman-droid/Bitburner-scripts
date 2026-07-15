@@ -11,6 +11,7 @@ export async function main(ns) {
 	let serverNames = getServerNames(ns);
 	let servers = getServerObjects(ns, serverNames);
 	let bestServers = getBestServerList(servers, player);
+	let bestServerName = bestServers[0].hostname;
 	//ns.tprint(servers.length)
 	let hackedServers = ["home"];
 
@@ -32,11 +33,21 @@ export async function main(ns) {
 					ns.scp(scriptToBeRun, server.hostname, "home");
 					if (numOfThreads >= 1 && (server.moneyMax ?? 0) > 0) {
 						try {
-							ns.exec(scriptToBeRun, server.hostname, numOfThreads);
+							ns.exec(
+								scriptToBeRun,
+								server.hostname,
+								numOfThreads,
+								bestServerName,
+							);
 						} catch (e) {
 							ns.tprint(e);
 							numOfThreads -= 1;
-							ns.exec(scriptToBeRun, server.hostname, numOfThreads);
+							ns.exec(
+								scriptToBeRun,
+								server.hostname,
+								numOfThreads,
+								bestServerName,
+							);
 						} finally {
 							ns.tprint(
 								`${scriptToBeRun} executed on ${server.hostname} with ${numOfThreads} threads`,
