@@ -50,6 +50,7 @@ export async function main(ns) {
 
 			if (bestServerHasChanged) {
 				// totalThreads = 0;
+				ns.tprint(`${server.hostname} was reset `);
 				serverReset(ns, server);
 			}
 
