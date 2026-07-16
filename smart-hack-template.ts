@@ -32,5 +32,6 @@ export async function main(ns: NS) {
 		} else {
 			await ns.hack(target);
 		}
+		await ns.sleep(10);
 	}
 }

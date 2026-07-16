@@ -7,7 +7,6 @@ import { serverReset } from "serverutils/server-reset";
 export async function main(ns) {
 	let scriptToBeRun = "smart-hack-template.ts";
 	let scriptRam = ns.getScriptRam(scriptToBeRun);
-	let currentBestServerName;
 	let serverNames = getServerNames(ns);
 	let hackedServers = new Set(["home"]);
 	let currentBestServer = null;
@@ -15,7 +14,8 @@ export async function main(ns) {
 
 	while (true) {
 		let bestServerHasChanged = false;
-		const player = ns.getPlayer();
+		let player = ns.getPlayer();
+		console.log(player);
 
 		// Always refresh server objects
 		const servers = getServerObjects(ns, serverNames);
@@ -49,6 +49,7 @@ export async function main(ns) {
 			if (!server.hasAdminRights) continue;
 
 			if (bestServerHasChanged) {
+				// totalThreads = 0;
 				serverReset(ns, server);
 			}
 

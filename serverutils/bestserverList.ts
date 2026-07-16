@@ -8,12 +8,14 @@ interface ModifiedServer extends Server {
 }
 
 export function getBestServerList(servers: ModifiedServer[], player: Player) {
+	console.log(player);
 	// let hackedServers = servers.filter(server => server.hasAdminRights)
 	// console.log('has Admin rights')
 	// console.log(hackedServers)
 	// let bestHackLevel = hackedServers.filter(server => server.requiredHackingSkill <= (player.skills.hacking / 2))
 	// console.log(bestHackLevel)
 	// bestHackLevel.sort((a, b) => b.hackWeight - a.hackWeight)
+
 	let filteredServers: ModifiedServer[] = servers.filter((server) =>
 		filterServers(server, player),
 	);
