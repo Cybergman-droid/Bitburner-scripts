@@ -20,6 +20,16 @@ export async function main(ns) {
 		// Always refresh server objects
 		const servers = getServerObjects(ns, serverNames);
 
+		// Try to root every server
+		for (let server of servers) {
+			if (!server.hasAdminRights) {
+				//ns.tprint(` Admin rights on ${server.hostname}: ${server.hasAdminRights}`)
+				//ns.tprint(`${server.hostname} has not been hacked`)
+				await getRootAccess(ns, server);
+				//ns.tprint(` Admin rights on ${server.hostname}: ${server.hasAdminRights}`)
+			}
+		}
+
 		// Pick best target using fresh server data
 		const bestServers = getBestServerList(servers, player);
 		const newBestServer = bestServers[0].hostname;
@@ -32,16 +42,7 @@ export async function main(ns) {
 			console.log("the current best server is");
 			console.log(currentBestServer);
 			bestServerHasChanged = true;
-		}
-
-		// Try to root every server
-		for (let server of servers) {
-			if (!server.hasAdminRights) {
-				//ns.tprint(` Admin rights on ${server.hostname}: ${server.hasAdminRights}`)
-				//ns.tprint(`${server.hostname} has not been hacked`)
-				await getRootAccess(ns, server);
-				//ns.tprint(` Admin rights on ${server.hostname}: ${server.hasAdminRights}`)
-			}
+			totalThreads = 0;
 		}
 
 		for (let server of servers) {
